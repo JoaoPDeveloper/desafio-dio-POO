@@ -3,6 +3,7 @@ import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
 
+
 public class Main {
     public static void main(String[] args) {
         Curso curso1 = new Curso();
@@ -15,7 +16,7 @@ public class Main {
         Curso curso2 = new Curso();
         curso2.setTitulo("curso js");
         curso2.setDescricao("Curso de JavaScript");
-        curso2.setCargaHoraria(22);
+        curso2.setCargaHoraria(4);
 
         System.out.println(curso2);
 
