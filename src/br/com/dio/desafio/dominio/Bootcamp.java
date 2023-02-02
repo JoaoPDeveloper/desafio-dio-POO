@@ -1,69 +1,78 @@
 package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Bootcamp {
     private String nome;
-    private String descricao;
-    private final LocalDate dataInicial = LocalDate.now();
-    private final LocalDate dataFinal = dataInicial.plusDays(45);
-    private Set<Dev> devInscritos = new HashSet<>();
-    private Set<Conteudo> conteudos = new LinkedHashSet<>();
+    private String descriptor;
+    private final LocalDate dataInitial = LocalDate.now();
+    private final LocalDate dataFinal;
+    private Set<Dev> devsInscriptions;
+    private Set<Content> contested;
+
+    public Bootcamp() {
+        this.dataFinal = this.dataInitial.plusDays(45L);
+        this.devsInscriptions = new HashSet<>();
+        this.contested = new LinkedHashSet<>();
+    }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescriptor() {
+        return this.descriptor;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescriptor(String descriptor) {
+        this.descriptor = descriptor;
     }
 
-    public String getDataInicial() {
-        return LocalDate;
+    public LocalDate getDataInitial() {
+        return this.dataInitial;
     }
 
-    public String getDataFinal() {
-        return dataFinal;
+    public LocalDate getDataFinal() {
+        return this.dataFinal;
     }
 
-    public Set<Dev> getDevInscritos() {
-        return devInscritos;
+    public Set<Dev> getDevsInscriptions() {
+        return this.devsInscriptions;
     }
 
-    public void setDevInscritos(Set<Dev> devInscritos) {
-        this.devInscritos = devInscritos;
+    public void setDevsInscriptions(Set<Dev> devsInscriptions) {
+        this.devsInscriptions = devsInscriptions;
     }
 
-    public Set<Conteudo> getConteudos() {
-        return conteudos;
+    public Set<Content> getContested() {
+        return this.contested;
     }
 
-    public void setConteudos(Set<Conteudo> conteudos) {
-        this.conteudos = conteudos;
+    public void setContested(Set<Content> contested) {
+        this.contested = contested;
     }
 
-    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Bootcamp bootcamp = (Bootcamp) o;
-        return Objects.equals(nome, bootcamp.nome) && Objects.equals(descricao, bootcamp.descricao) && Objects.equals(dataInicial, bootcamp.dataInicial) && Objects.equals(dataFinal, bootcamp.dataFinal) && Objects.equals(devInscritos, bootcamp.devInscritos) && Objects.equals(conteudos, bootcamp.conteudos);
+        if (this == o) {
+            return true;
+        } else if (o != null && this.getClass() == o.getClass()) {
+            Bootcamp bootcamp = (Bootcamp)o;
+            return Objects.equals(this.nome, bootcamp.nome) && Objects.equals(this.descriptor, bootcamp.descriptor) && Objects.equals(this.dataInitial, bootcamp.dataInitial) && Objects.equals(this.dataFinal, bootcamp.dataFinal) && Objects.equals(this.devsInscriptions, bootcamp.devsInscriptions) && Objects.equals(this.contested, bootcamp.contested);
+        } else {
+            return false;
+        }
     }
 
-    @Override
     public int hashCode() {
-        return Objects.hash(nome, descricao, dataInicial, dataFinal, devInscritos, conteudos);
+        return Objects.hash(this.nome, this.descriptor, this.dataInitial, this.dataFinal, this.devsInscriptions, this.contested);
+    }
+
+    public Calendar getDevInscriptions() {
+        return null;
     }
 }

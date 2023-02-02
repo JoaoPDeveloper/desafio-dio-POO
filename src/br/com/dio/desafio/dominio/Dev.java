@@ -7,24 +7,27 @@ import java.util.Set;
 
 public class Dev {
     private String nome;
-    private Set<Conteudo> conteudoInscritos = new LinkedHashSet<>();
-    private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
+    private Set<Content> contentInscriptions = new LinkedHashSet<>();
+    private Set<Content> contestedConclusion = new LinkedHashSet<>();
 
-    public  void inscreverBootcamp(Bootcamp bootcamp){
-        this.conteudoInscritos.addAll(bootcamp.getConteudos());
-        bootcamp.getDevInscritos().add(this);
+    public Dev(){
+
     }
-    public void progredir(){
-        Optional<Conteudo> conteudo = this.conteudoInscritos.stream().findFirst();
-        if (conteudo.isPresent()){
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudoInscritos.remove((conteudo.get()));
+    public void inscriberBootcamp(Bootcamp bootcamp){
+        this.contentInscriptions.addAll(bootcamp.getContested());
+        bootcamp.getDevInscriptions();
+    }
+    public void progress(){
+        Optional<Content> content = this.contentInscriptions.stream().findFirst();
+        if (content.isPresent()){
+            this.contestedConclusion.add(content.get());
+            this.contentInscriptions.remove((content.get()));
         }  else {
             System.err.println("Você não está Matriculado em nenhum Conteudo!");
         }
     }
-    public double calcularTotalXp(){
-        return this.conteudosConcluidos.stream().mapToDouble(Conteudo::calcularXp).sum();
+    public double calculatorTotalXp(){
+        return this.contestedConclusion.stream().mapToDouble(Content::calculatorXp).sum();
     }
 
     public String getNome() {
@@ -35,20 +38,20 @@ public class Dev {
         this.nome = nome;
     }
 
-    public Set<Conteudo> getConteudoInscritos() {
-        return conteudoInscritos;
+    public Set<Content> getContentInscriptions() {
+        return contentInscriptions;
     }
 
-    public void setConteudoInscritos(Set<Conteudo> conteudoInscritos) {
-        this.conteudoInscritos = conteudoInscritos;
+    public void setContentInscriptions(Set<Content> contentInscriptions) {
+        this.contentInscriptions = contentInscriptions;
     }
 
-    public Set<Conteudo> getConteudosConcluidos() {
-        return conteudosConcluidos;
+    public Set<Content> getContestedConclusion() {
+        return contestedConclusion;
     }
 
-    public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
-        this.conteudosConcluidos = conteudosConcluidos;
+    public void setContestedConclusion(Set<Content> contestedConclusion) {
+        this.contestedConclusion = contestedConclusion;
     }
 
     @Override
@@ -56,12 +59,12 @@ public class Dev {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dev dev = (Dev) o;
-        return Objects.equals(nome, dev.nome) && Objects.equals(conteudoInscritos, dev.conteudoInscritos) && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
+        return Objects.equals(nome, dev.nome) && Objects.equals(contentInscriptions, dev.contentInscriptions) && Objects.equals(contestedConclusion, dev.contestedConclusion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, conteudoInscritos, conteudosConcluidos);
+        return Objects.hash(nome, contentInscriptions, contestedConclusion);
     }
 }
 

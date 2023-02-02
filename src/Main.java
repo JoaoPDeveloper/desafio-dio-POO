@@ -1,62 +1,70 @@
 import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Curse;
 import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.Mentor;
 
 import java.time.LocalDate;
 
 
 public class Main {
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
+        Curse curse1 = new Curse();
+        curse1.setTitle("curso java");
+        curse1.setDescriptor("descrição curso java");
+        curse1.setWorkload(8);
 
-        System.out.println(curso1);
+        System.out.println(curse1);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("Curso de JavaScript");
-        curso2.setCargaHoraria(4);
+        Curse curse2 = new Curse();
+        curse2.setTitle("curso js");
+        curse2.setDescriptor("Curso de JavaScript");
+        curse2.setWorkload(4);
 
-        System.out.println(curso2);
+        System.out.println(curse2);
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria de Java");
-        mentoria.setDescricao("Descrição da mentoria java");
-        mentoria.setData(LocalDate.now());
+        Mentor mentor = new Mentor();
+        mentor.setTitle("mentoria de Java");
+        mentor.setDescriptor("Descrição da mentoria java");
+        mentor.setData(LocalDate.now());
 
-        System.out.println(mentoria);
+        System.out.println(mentor);
 
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setNome("Bootcamp Java developer");
-        bootcamp.setDescricao("Descrição do bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+        bootcamp.setDescriptor("Descrição do bootcamp Java Developer");
+        bootcamp.getContested().add(curse1);
+        bootcamp.getContested().add(curse2);
+        bootcamp.getContested().add(mentor);
 
         Dev devJoao = new Dev();
         devJoao.setNome ("Camila");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteudos Incritos Joao" + devJoao.getConteudoInscritos());
-        devJoao.progredir();
-        System.out.println("Conteudos Incritos Joao" + devJoao.getConteudoInscritos());
-        System.out.println("Conteudos Incritos Joao" + devJoao.getConteudosConcluidos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
-        System.out.println("XP" + devJoao.calcularTotalXp());
+        devJoao.inscriberBootcamp(bootcamp);
+        System.out.println("Conteudos Incritos Joao" + devJoao.getContentInscriptions());
+        devJoao.progress();
+        System.out.println("Conteudos Incritos Joao" + devJoao.getContentInscriptions());
+        devJoao.progress();
+        System.out.println("Conteudos Incritos Joao" + devJoao.getContestedConclusion());
+        devJoao.progress();
+        System.out.println("Conteudos Incritos Joao" + devJoao.getContentInscriptions());
+        devJoao.progress();
+        System.out.println("Conteudos Incritos Joao" + devJoao.getContentInscriptions());
+        devJoao.progress();
+        System.out.println("Conteudos Incritos Joao" + devJoao.getContentInscriptions());
+        devJoao.progress();
+        System.out.println("Conteudos Incritos Joao" + devJoao.getContentInscriptions());
+        System.out.println("XP " + devJoao.calculatorTotalXp());
 
         System.out.println("-------");
 
         Dev devCamila = new Dev();
         devCamila.setNome("Camila");
-        devCamila.inscreverBootcamp(bootcamp);
-        System.out.println("Conteudos Incritos Camila " + devCamila.getConteudoInscritos());
-        devCamila.progredir();
-        System.out.println("Conteudos Incritos Camila " + devCamila.getConteudoInscritos());
-        System.out.println("Conteudos Incritos Camila " + devCamila.getConteudosConcluidos());
-        System.out.println("XP" + devCamila.calcularTotalXp());
+        devCamila.inscriberBootcamp(bootcamp);
+        System.out.println("Conteudos Incritos Camila " + devCamila.getContentInscriptions());
+        devCamila.progress();
+        System.out.println("Conteudos Incritos Camila " + devCamila.getContentInscriptions());
+        devCamila.progress();
+        System.out.println("Conteudos Incritos Camila " + devCamila.getContestedConclusion());
+        devCamila.progress();
+        System.out.println("XP " + devCamila.calculatorTotalXp());
     }
 }
